@@ -27,28 +27,25 @@ def number_of_available_different_paths_recursive(board, snake_deque, depth_rema
 	else:
 		snake_deque_copy = snake_deque.copy()
 		snake_deque_checker = snake_deque.copy()
+		snake_deque_checker.pop()
 		head_position = snake_deque_copy.popleft() #Find the snake's head
 		snake_deque_copy.clear()
 		x, y = head_position[0], head_position[1]
 		if x > 0: #Left
 			if snake_deque_checker.count((x-1,y)) == 0:
 				snake_deque_copy = move_snake(snake_deque, 'left')
-				print('L')
 				result += number_of_available_different_paths_recursive(board, snake_deque_copy, depth_remaining-1)
 		if y > 0: #Down
 			if snake_deque_checker.count((x,y-1)) == 0:
 				snake_deque_copy = move_snake(snake_deque, 'down')
-				print('D')
 				result += number_of_available_different_paths_recursive(board, snake_deque_copy, depth_remaining-1)
 		if board[0]-1 > x: #Right
 			if snake_deque_checker.count((x+1,y)) == 0:
 				snake_deque_copy = move_snake(snake_deque, 'right')
-				print('R')
 				result += number_of_available_different_paths_recursive(board, snake_deque_copy, depth_remaining-1)
 		if board[1]-1 > y: #Up
 			if snake_deque_checker.count((x,y+1)) == 0:
 				snake_deque_copy = move_snake(snake_deque, 'up')
-				print('U')
 				result += number_of_available_different_paths_recursive(board, snake_deque_copy, depth_remaining-1)
 		return result
 
