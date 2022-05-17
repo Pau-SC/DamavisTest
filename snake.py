@@ -55,15 +55,9 @@ def number_of_available_different_paths_recursive(board, snake_deque, depth_rema
 
 
 def number_of_available_different_paths(board, snake, depth):
-	position_taken_array = [[0 for i in range(0,board[1])] for j in range(0,board[0])] #Contains booleans with occupied positions
-	for i in range(0, board[0]):
-		for j in range(0, board[1]):
-			position_taken_array[i][j] = False
-
 	snake_deque = deque()
 	for snake_positions in snake: 
 		i, j = snake_positions[0], snake_positions[1]
-		position_taken_array[i][j] = True #Filling positions occupied by snake
 		snake_deque.append((snake_positions[0], snake_positions[1])) #Create a deque object with the snake in order
 	result = number_of_available_different_paths_recursive(board, snake_deque, depth)
 	return result
