@@ -1,9 +1,8 @@
 from collections import deque
-from argparse import ArgumentParser
 import sys
 
 '''
-Moves the tail to the new position of the snake, returning an updated version.
+Removes the tail, extends the head in the given direction, returning an updated version.
 
 Parameter snake_deque: The deque representing the snake to move
 Parameter direction: Can be either 'left', 'down', 'right' or 'up', deciding the movement.
@@ -29,6 +28,11 @@ def move_snake(snake_deque, direction):
 '''
 Recursive funtion to look through all the possible movements of the snake given a board and the deque object
 of the snake specified on the main function.
+	Parameter board: Array containing 2 values, being the maximum x and y of the canvas where the snake exists.
+					 Precondition: from 1x1 to 10x10
+	Parameter snake_deque: deque() object version of snake, so it has a direction.
+	Parameter depth_remaining: amount of movements left until the path is accepted.
+
 '''
 def number_of_available_different_paths_recursive(board, snake_deque, depth_remaining):
 	result = 0
@@ -41,6 +45,9 @@ def number_of_available_different_paths_recursive(board, snake_deque, depth_rema
 		head_position = snake_deque_copy.popleft() #Find the snake's head with a copy
 		snake_deque_copy.clear() #Will be repurposed for relative position within recursivity
 		x, y = head_position[0], head_position[1]
+		'''
+		Check board size, then check if snake already exists, then move and call recursive.
+		'''
 		if x > 0: #Left
 			if snake_deque_checker.count((x-1,y)) == 0:
 				snake_deque_copy = move_snake(snake_deque, 'left')
