@@ -1,7 +1,9 @@
 from snake import *
 import unittest
+
 ''' Testing Unit '''
 class myTests(unittest.TestCase):
+
 	def test1(self):
 		'''
 		board: [4, 3]
@@ -31,8 +33,6 @@ class myTests(unittest.TestCase):
 		result = 81
 		'''
 		self.assertEqual(number_of_available_different_paths([10,10], [[5,5], [5,4], [4,4], [4,5]], 4), 81)	
-
-
 
 if __name__ == "__main__":
 	unittest.main()
