@@ -4,7 +4,7 @@ import sys
 '''
 Removes the tail, extends the head in the given direction, returning an updated version.
 
-Parameter snake_deque: The deque representing the snake to move
+Parameter snake_deque: The deque representing the snake
 Parameter direction: Can be either 'left', 'down', 'right' or 'up', deciding the movement.
 '''
 def move_snake(snake_deque, direction):
@@ -26,8 +26,8 @@ def move_snake(snake_deque, direction):
 	return snake_deque_copy
 
 '''
-Recursive funtion to look through all the possible movements of the snake given a board and the deque object
-of the snake specified on the main function.
+Recursive funtion that looks through all the possible movements of the snake given a board and the deque object
+made with the snake specified on the main function.
 	Parameter board: Array containing 2 values, being the maximum x and y of the canvas where the snake exists.
 					 Precondition: from 1x1 to 10x10
 	Parameter snake_deque: deque() object version of snake, so it has a direction.
@@ -70,7 +70,7 @@ def number_of_available_different_paths_recursive(board, snake_deque, depth_rema
 '''
 The main function, initializes a deque with the snake for usage and starts the recursive function.
 
-Returns the number of available movements with the given depth and board
+Returns the number of available movements with the given depth, board and snake positions.
 
 	Parameter board: Array containing 2 values, being the maximum x and y of the canvas where the snake exists.
 					 Precondition: from 1x1 to 10x10
